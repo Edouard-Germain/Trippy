@@ -1,14 +1,15 @@
 import React from 'react';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import styled from 'styled-components'
+import Footer from './Components/Footer'
 
 
 
 const App = () => {
   return (
-    <BrowserRouter>
+<BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Home/>}> </Route>
+        <Route exact path="/" element={<Home/>}> </Route> 
         <Route path="/city" element={<City/>}> </Route>
         <Route path="/hotels" element={<Hotels/>}> </Route>
         <Route path="/hotel" element={<Hotel/>}> </Route>
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="*" element={<NotFound/>}> </Route>
       </Routes>
     </BrowserRouter>
+    
   );
 };
 
