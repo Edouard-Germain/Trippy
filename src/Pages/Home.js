@@ -1,8 +1,13 @@
-import Footer from '../Components/Footer'
+import Footer from '../components/Footer'
+import Card from '../components/Card'
 const Home = () => {
 
     return (
-
-        <Footer/>
+        <>
+            <Card/>
+            <Footer/>
+        </>
     )
 }
+
+export default Home

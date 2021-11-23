@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
+// import { useNavigate } from "react-router-dom"
+import { useContext } from 'react'
+import { CityContext } from '../context/City'
+
+
 
 const IMG = styled.img`
   height:200px;
@@ -18,24 +22,24 @@ const Title = styled.h3`
 
 
 const Card = () => {
-    const [cards, setCard] = useState([])
+    const { cities, setCities } = useContext(CityContext)
+    // const navigate = useNavigate()
+    console.log(cities)
 
-    useEffect(() => { 
-        fetch("https://trippy-konexio.herokuapp.com/api/home")
-        .then(response => response.json())
-        .then(result => {
-          setCard(result.cities)
-        })}, []);
 
-    if (cards == null ) {
+        // const onHandleClick = () => {
+        //     navigate("/city")
+        // }
+
+    if (cities == null ) {
         return null
     } else {
         return (
             <div>
-                {cards.map(card => 
-                    <Container>
-                        <IMG src={`https://trippy-konexio.herokuapp.com${card.source}`} alt={card.slug} />
-                        <Title> {card.name} </Title>
+                {cities.map(city => 
+                    <Container >
+                        <IMG src={`https://trippy-konexio.herokuapp.com${city.source}`} alt={city.slug} />
+                        <Title> {city.name} </Title>
                     </Container>
                 )}
             </div>
