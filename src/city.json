@@ -1,5 +1,5 @@
-{
-    "cities": [
+
+    [
         {
             "name": "Paris",
             "slug": "paris",
@@ -26,4 +26,3 @@
             "source": "/img/london.png"
         }
     ]
-}

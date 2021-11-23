@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useContext } from 'react'
 import { CityContext } from '../context/City'
 
@@ -22,14 +22,13 @@ const Title = styled.h3`
 
 
 const Card = () => {
-    const { cities, setCities } = useContext(CityContext)
-    // const navigate = useNavigate()
-    console.log(cities)
-
-
-        // const onHandleClick = () => {
-        //     navigate("/city")
-        // }
+    const {cities} = useContext(CityContext)
+    const navigate = useNavigate()
+    
+    
+        const onHandleClick = () => {
+            navigate("/city")
+        }
 
     if (cities == null ) {
         return null
@@ -37,7 +36,7 @@ const Card = () => {
         return (
             <div>
                 {cities.map(city => 
-                    <Container >
+                    <Container onClick={onHandleClick} >
                         <IMG src={`https://trippy-konexio.herokuapp.com${city.source}`} alt={city.slug} />
                         <Title> {city.name} </Title>
                     </Container>

@@ -1,14 +1,14 @@
 import { createContext, useState } from "react"
-import cities from '../city.json'
+import citiesTemplate from '../city.json'
 
 const CityContext = createContext({})
 
 const CityContextProvider = (props) => {
-    const [city, setCity] = useState(cities)
+    const [cities, setCity] = useState(citiesTemplate)
 
 
     const value = { 
-        city,
+        cities,
         setCity
       }
     
