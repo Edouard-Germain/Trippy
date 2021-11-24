@@ -45,7 +45,7 @@ const Header = () => {
                 : (
                     <Liste className="navbar">
                         <Link to="/" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"25px"}}>Home</Link>
-                        <Link to="/Hôtel" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"25px"}}>Hôtel</Link>                     
+                        <Link to="/hotel" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"25px"}}>Hôtel</Link>                     
                         <Link to="/City" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"25px"}}>City</Link>
                         <Link to="/Rooms" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"25px"}}>Rooms</Link>
                         <Link to="/Favoris" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"25px"}}>Favoris</Link>
