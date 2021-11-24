@@ -5,16 +5,35 @@ import {GiHamburgerMenu,GiReturnArrow} from 'react-icons/gi'
 import { useState} from 'react';
 
 const Container = styled.div` 
-liststyle: none
-margin: 10px;
-padding: 10px;
-display: flex;
-flex-direction: row;
-list-style: none;
-justify-content: space-between;
-align-items: center;
-background-color: #219ebc;
-`;
+    liststyle: none
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #219ebc;
+    `
+
+const Button = styled.button`
+    background: #ffffff;
+    background-image: -webkit-linear-gradient(top, #ffffff, #219ebc);
+    background-image: -moz-linear-gradient(top, #ffffff, #219ebc);
+    background-image: -ms-linear-gradient(top, #ffffff, #219ebc);
+    background-image: -o-linear-gradient(top, #ffffff, #219ebc);
+    background-image: linear-gradient(to bottom, #ffffff, #219ebc);
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    text-shadow: 0px 1px 3px #666666;
+    -webkit-box-shadow: 0px 1px 3px #666666;
+    -moz-box-shadow: 0px 1px 3px #666666;
+    box-shadow: 0px 1px 3px #666666;
+    font-family: Georgia;
+    color: #ffffff;
+    font-size: 13px;
+    padding: 10px 20px 10px 20px;`
 
 const Title = styled.h1`
 font-family: 'Alegreya Sans SC', sans-serif;`
