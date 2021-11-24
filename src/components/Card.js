@@ -5,6 +5,7 @@ import { useContext } from 'react'
 import { CityContext } from '../context/City'
 
 
+
 const IMG = styled.img`
   height:200px;
   width: 100%;
@@ -22,6 +23,7 @@ const Title = styled.h3`
 
 const Card = () => {
     const {cities} = useContext(CityContext)
+    
 
         
         
@@ -32,6 +34,7 @@ const Card = () => {
             <div>
                 {cities.map(city => 
                     <Container >
+                        
                         <Link to={`/hotels/${city.slug}`} >
                         <IMG src={`https://trippy-konexio.herokuapp.com${city.source}`} alt={city.slug} />
                         <Title> {city.name} </Title>
