@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useContext } from 'react'
 import { CityContext } from '../context/City'
 
@@ -22,31 +22,20 @@ const Title = styled.h3`
 
 const Card = () => {
     const {cities} = useContext(CityContext)
-    const{parameters,setParameters} = useContext(CityContext)
-    const navigate = useNavigate()
-    
-//    console.log(cities) 
 
-        const onHandleClick = (slug) => {
-            navigate("/city")
-        const index = cities.findIndex(city => city.slug === slug )
-        // let clonnedArray = [...parameters]
-        // clonnedArray = [...clonnedArray,cities[index].slug]
-
-        setParameters( {city : cities[index].slug})
-
-        }
-        console.log(parameters)
-
+        
+        
     if (cities == null ) {
         return null
     } else {
         return (
             <div>
                 {cities.map(city => 
-                    <Container onClick={() => onHandleClick(city.slug)} >
+                    <Container >
+                        <Link to={`/hotels/${city.slug}`} >
                         <IMG src={`https://trippy-konexio.herokuapp.com${city.source}`} alt={city.slug} />
                         <Title> {city.name} </Title>
+                        </Link>
                     </Container>
                 )}
             </div>
