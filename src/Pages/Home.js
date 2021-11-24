@@ -1,11 +1,13 @@
-import React from 'react';
+import Footer from '../components/Footer'
+import Card from '../components/Card'
+const Home = () => {
 
-function Home(props) {
     return (
-        <div>
-            
-        </div>
-    );
+        <>
+            <Card/>
+            <Footer/>
+        </>
+    )
 }
 
-export default Home;
+export default Home

@@ -1,0 +1,33 @@
+
+    [
+        {
+            "name": "Paris",
+            "slug": "paris",
+            "source": "/img/paris.png",
+            "id" : 0
+        },
+        {
+            "name": "Rome",
+            "slug": "rome",
+            "source": "/img/rome.png",
+            "id" : 1
+        },
+        {
+            "name": "Nice",
+            "slug": "nice",
+            "source": "/img/nice.png",
+            "id" : 2
+        },
+        {
+            "name": "New York",
+            "slug": "new-york",
+            "source": "/img/new-york.png",
+            "id" : 3
+        },
+        {
+            "name": "Londres",
+            "slug": "london",
+            "source": "/img/london.png",
+            "id" : 4
+        }
+    ]
