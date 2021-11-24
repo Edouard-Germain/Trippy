@@ -5,11 +5,19 @@ const CityContext = createContext({})
 
 const CityContextProvider = (props) => {
     const [cities, setCity] = useState(citiesTemplate)
+    const [parameters, setParameters] = useState({
+      city : '',
+      hotelId : '',
+    })
 
 
     const value = { 
         cities,
-        setCity
+        setCity, 
+        parameters,
+        setParameters
+
+
       }
     
       return (
