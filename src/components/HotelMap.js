@@ -7,6 +7,7 @@ height: 65vh;
 width: 100%;
 `
 const HotelMap =({hotel}) =>{
+    
     return (
     <MapContainer>
         <GoogleMapReact
