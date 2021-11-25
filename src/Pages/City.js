@@ -10,12 +10,12 @@ import {BsStar} from 'react-icons/bs'
 import Favorites from './Favorites';
 
 const MapContainer = styled.div`
-height: 100vh;
-width: 70%;`
+height: 50vh;
+width: 90%;`
 
 const ListContainer = styled.div`
-height: 100vh;
-width: 30%;
+height: 50vh;
+width: 90%;
 overflow: scroll;
 `
 const List = styled.div`
@@ -24,7 +24,7 @@ margin : 10px 5px;
 border-radius: 10px
 `
 const Container = styled.div`
-display : flex
+display : block
 `
 const BUTTON2 = styled.button`
 background-color : white;
