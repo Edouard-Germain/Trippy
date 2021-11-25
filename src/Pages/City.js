@@ -4,6 +4,7 @@ import { CityContext } from '../context/City';
 import GoogleMapReact from 'google-map-react'
 import Marker from '../components/Marker';
 import { useParams } from 'react-router';
+import {Link} from 'react-router-dom'
 import styled from 'styled-components';
 // import arrayImage from '../images.json'
 import {BsStar} from 'react-icons/bs'
@@ -36,11 +37,11 @@ color : white`
 const City = () => {
     const {city} = useParams()
     const [favorite, setFavorite] = useState(false)
-
+    const  [page,setPage] = useState(1)
     const [hotels, setHotels] = useState(null)
 
     useEffect(() => {
-        fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}`)
+        fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}/?page=${page}`)
       .then(response => response.json())
       .then(data => setHotels(data))
     },[])
@@ -52,6 +53,18 @@ const City = () => {
             setFavorite(true)
         }
     }
+    const NextPage = () => {
+        if (page < 4){
+            setPage(page +1 )
+        }
+    }
+    const PreviousPage = () => {
+        if (page >=1){
+            setPage(page-1)
+        }
+    }
+
+    console.log("page",page)
 
     if(hotels == null) {
         return null
@@ -68,15 +81,19 @@ const City = () => {
                     // }
                     // else { src = 'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=' }
                 
-                
+                    
                    <List>
                     {favorite ? (<BUTTON1> <BsStar onClick={AddtoFavorite}/> </BUTTON1>) : (<BUTTON2> <BsStar onClick={AddtoFavorite}/> </BUTTON2>) }
                     {/* <img src={src} alt={hotel.phone} /> */}
+                     <Link to={`/hotel/${hotel._id}`} >
                     <p> {hotel.name} </p>
                     <p> {hotel.phone} </p>
                     <p> {hotel.stars} </p>
+                    </Link>
                    </List> 
                 )}
+                 <button onClick={NextPage}>suivant</button>
+                    <button onClick={PreviousPage}>précedent</button>
                 </ListContainer>
                 <MapContainer>
                     <GoogleMapReact
