@@ -12,8 +12,8 @@ const HotelMap =({hotel}) =>{
         <GoogleMapReact
                         bootstrapURLKeys={{ key: "" }}
                         defaultCenter={{
-                            lat : hotel.lat                            ,
-                            lng : hotel.lon}}
+                            lat : hotel.location.lat,                            
+                            lng : hotel.location.lon}}
                         defaultZoom={12}
         ></GoogleMapReact>
     </MapContainer>

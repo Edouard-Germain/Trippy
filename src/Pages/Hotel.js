@@ -17,7 +17,7 @@ import Footer from '../components/Footer'
 // le stoker dans le state hotel
 // afficher l'objet hotel
 const Hotel = () => {
-    const [hotel, setHotel] = useState([])
+    const [hotel, setHotel] = useState({})
     const [featActive, setFeatActive]= useState(false)
     
     useEffect(() => { // => componentDidMount
@@ -39,6 +39,7 @@ const Hotel = () => {
         }
 
     }
+
     // console.log(hotel)
     const Banner = styled.div`
         display : flex;
@@ -87,7 +88,12 @@ const Hotel = () => {
         color: gray;
         `
     // const stars = hotel.star -1
-    return ( 
+    console.log(hotel)
+    if (hotel == null){
+        return null}
+        else {
+            return (
+     
         <>
           <Banner>
               <Title>{hotel.name}</Title>
@@ -117,7 +123,10 @@ const Hotel = () => {
         <HotelMap hotel = {hotel}></HotelMap>
         <Footer></Footer>
         </>
-    )   
-}
+
+)
+} 
+}  
+
 
 export default Hotel
