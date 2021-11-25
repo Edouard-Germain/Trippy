@@ -7,6 +7,8 @@ import ReactStars from "react-rating-stars-component";
 import HotelMap  from '../components/HotelMap';
 import Footer from '../components/Footer'
 import { useParams } from 'react-router';
+import Icones from '../components/Icones';
+import { element } from 'prop-types';
 
 
 const Banner = styled.div`
@@ -57,6 +59,21 @@ const Text = styled.p`
     `
 
 
+
+const IconAlign = styled.ul`
+    padding: 5px;
+    
+`
+const Comm = styled.div`
+display: flex;
+flex-direction:row;
+flex-wrap: wrap;
+align-items: center;
+`
+const IconItem = styled.div`
+    
+    
+`
 // 1creer une route dynamique avec un parametre id 
 // recuperer le parametre dans l'url
 // utiliser le parametre pour fetcher le bon hotel
@@ -87,44 +104,62 @@ const Hotel = () => {
         }
     }
 
+    // console.log(hotel)
+   
+
+    // const stars = hotel.star -1
     console.log(hotelData)
-    // const stars = hotelData.star -1
-    console.log("Hotel state hotelData => ", hotelData)
-    if (hotelData == null) {
-        return null
-    } else {
-        return (
+    if (hotelData == null){
+        return null}
+        else {
+            return (
+     
         <>
-            <Banner>
+        <Banner>
                 <Title>{hotelData.name}</Title>
-                    {/* <Title>{hotelData.name}</Title> */}
-            </Banner>   
+                {/* <Title>{hotel.name}</Title> */}
+            </Banner>
+        <HotelCard>
+            <ReactStars count={hotelData.star} size={24} color ="#ffd700"/>
+            <Text>Adresse : {hotelData.adress}</Text>
+            <Text>Phone :{hotelData.phone}</Text>
+            <Text>Price : {hotelData.price}€</Text>
+            <Button onClick ={handleFeature}>FEATURES</Button>
+            {featActive&& 
             <HotelCard>
-                <ReactStars count={hotelData.star} size={24} color ="#ffd700"/>
-                <Text>Adresse : {hotelData.adress}</Text>
-                <Text>Phone :{hotelData.phone}</Text>
-                <Text>Price : {hotelData.price}€</Text>
-                <Button onClick ={handleFeature}>FEATURES</Button>
-                {featActive&& 
-                    <HotelCard>
-                        <Text>Douche</Text>
-                        <Text>Wifi</Text>
-                        <Text>PingPong</Text>
-                        <Text>piscine</Text>
-                        <Text>petit déjeuner</Text>
-                        <Text>Cours de zumba</Text>
-                    </HotelCard>}
-                {/* <p> Adresse :  {hotelData.adresse}</p>
-                <p> Phone : {hotelData.phone}</p>
-                <p> Price : {hotelData.price} €</p>
-                <p> Country :{hotelData.country}</p>
-                <p>{hotelData.stars}</p> */}
-            </HotelCard>
-            <HotelMap hotelData = {hotelData}></HotelMap>
-            <Footer></Footer>
+                {hotelData.commodities.filter(function (ele, pos) {
+                                return hotelData.commodities.indexOf(ele) == pos;
+                            }).map(element => (
+                                <Comm>
+                                    <IconAlign>
+                                        <Icones comodity={element}></Icones>
+                                    </IconAlign>
+                                    <IconItem>
+                                        <p>{element}</p>
+                                    </IconItem>
+                                </Comm>
+                            ))}
+            </HotelCard>}
+            {/* <p> Adresse :  {hotel.adresse}</p>
+            <p> Phone : {hotel.phone}</p>
+            <p> Price : {hotel.price} €</p>
+            <p> Country :{hotel.country}</p>
+            <p>{hotel.stars}</p> */}
+        </HotelCard>
+        <HotelMap hotelData = {hotelData}></HotelMap>
+        <Footer>{Icones("wifi")}</Footer>
+        
         </>
     ) } 
 }  
 
 
 export default Hotel
+
+{/* <HotelCard>
+                    <Text> 
+                        {hotel.commodities.filter(function(ele , pos){
+                            return hotel.commodities.indexOf(ele) == pos;
+                        }).map(element=> (<p>{element}</p>))} 
+                    </Text>
+                </HotelCard>} */}

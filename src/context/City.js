@@ -1,6 +1,7 @@
 import { createContext, useState } from "react"
 import citiesTemplate from '../city.json'
 
+
 const CityContext = createContext({})
 
 const CityContextProvider = (props) => {
@@ -23,7 +24,10 @@ const CityContextProvider = (props) => {
       return (
         <CityContext.Provider value={value}>
           {props.children}
+          
         </CityContext.Provider>
+        
+        
       )
 }
 

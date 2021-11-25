@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useContext } from 'react';
 import { CityContext } from '../context/City';
 import GoogleMapReact from 'google-map-react'
@@ -45,6 +45,7 @@ const City = () => {
       .then(response => response.json())
       .then(data => setHotels(data))
     },[])
+    
 
    const AddtoFavorite = () => {
         if (favorite) {
@@ -59,7 +60,7 @@ const City = () => {
         }
     }
     const PreviousPage = () => {
-        if (page >=1){
+        if (page >1){
             setPage(page-1)
         }
     }
