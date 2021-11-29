@@ -7,7 +7,6 @@ import { useState} from 'react';
 
 const Container = styled.div` 
 liststyle: none
-margin: 10px;
 padding: 10px;
 display: flex;
 flex-direction: row;

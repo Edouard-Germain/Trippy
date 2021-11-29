@@ -47,8 +47,9 @@ const City = () => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}/?page=${page}`)
       .then(response => response.json())
       .then(data => setHotels(data))
-    },[])
+    },[page,city])
     
+
 
    const addtoFavorite = (id, index) => {
         
@@ -103,7 +104,7 @@ const City = () => {
                     </Link>
                    </List> 
                 )}
-                 <button onClick={NextPage}>suivant</button>
+                    <button onClick={NextPage}>suivant</button>
                     <button onClick={PreviousPage}>précedent</button>
                 </ListContainer>
                 <MapContainer>
