@@ -12,11 +12,11 @@ import Favorites from './Favorites';
 
 const MapContainer = styled.div`
 height: 50vh;
-width: 90%;`
+width: 100%;`
 
 const ListContainer = styled.div`
 height: 50vh;
-width: 90%;
+width: 100%;
 overflow: scroll;
 `
 const List = styled.div`
@@ -63,9 +63,25 @@ const City = () => {
 
     }
 
+const onClickFavorite = (id) => {
+    if (!localStorage.getItem("favorites")) {
+        let newArray = []
+        newArray.push(id)
+        localStorage.setItem("favorites", JSON.stringify(newArray))
+    } else {
+        let favorites = JSON.parse(localStorage.getItem("favorites"))
+        favorites.push(id)
+        localStorage.setItem("favorites", JSON.stringify(favorites))
+    }
+    
+}
+
+
+
     const removetoFavorite = (id) => {
         setFavorite(false)
     }
+
     const NextPage = () => {
         if (page < 4){
             setPage(page +1 )
@@ -94,7 +110,7 @@ const City = () => {
                     
                    <List>
                     
-                    {favorite ? (<BUTTON1> <BsStar onClick={() => removetoFavorite(hotel._id, index)}/> </BUTTON1>) : (<BUTTON2> <BsStar onClick={()=>addtoFavorite(hotel._id, index)}/> </BUTTON2>) }
+                    {favorite ? (<BUTTON1> <BsStar onClick={() => removetoFavorite(hotel._id, index)}/> </BUTTON1>) : (<BUTTON2> <BsStar onClick={()=>{addtoFavorite(hotel._id, index); onClickFavorite(hotel._id)}}/> </BUTTON2>) }
                     {/* <img src={src} alt={hotel.phone} /> */}
                      <Link to={`/hotel/${hotel._id}`} >
                     <p> {hotel.name} </p>
