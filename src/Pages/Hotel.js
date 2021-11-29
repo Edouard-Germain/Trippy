@@ -155,10 +155,3 @@ const Hotel = () => {
 
 export default Hotel
 
-{/* <HotelCard>
-                    <Text> 
-                        {hotel.commodities.filter(function(ele , pos){
-                            return hotel.commodities.indexOf(ele) == pos;
-                        }).map(element=> (<p>{element}</p>))} 
-                    </Text>
-                </HotelCard>} */}

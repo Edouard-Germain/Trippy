@@ -20,12 +20,14 @@ const Price = styled.div`
 
 const Marker = (props) => {
 
-    
+  
   return (
+   
       <>
+     
         <MarkerContainer>
         <Price> {props.price}€ </Price>
-        <FaMapMarkerAlt style={{ width: '30px', height: '30px', color: "red", position: "absolute", bottom: '100%', left: '-20px' }} />
+         <FaMapMarkerAlt style={{ width: '30px', height: '30px', color: "red", position: "absolute", bottom: '100%', left: '-20px' }} />
         </MarkerContainer>
      </>
   )
