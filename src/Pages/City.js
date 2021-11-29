@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useContext } from 'react';
 import { CityContext } from '../context/City';
 import GoogleMapReact from 'google-map-react'
 import Marker from '../components/Marker';
 import { useParams } from 'react-router';
+import {Link} from 'react-router-dom'
 import styled from 'styled-components';
 // import arrayImage from '../images.json'
 import {BsStar} from 'react-icons/bs'
+import Favorites from './Favorites';
 
 const MapContainer = styled.div`
 height: 100vh;
 width: 70%;`
 
 const ListContainer = styled.div`
-height: 100vh
+height: 100vh;
 width: 30%;
 overflow: scroll;
 `
@@ -36,47 +38,73 @@ color : white`
 const City = () => {
     const {city} = useParams()
     const [favorite, setFavorite] = useState(false)
-
+    const  [page,setPage] = useState(1)
     const [hotels, setHotels] = useState(null)
+    // const [favoritePage, setFavoritePage] = useState([])
+    const [selectedBar, setSelectedBar] = useState({})
 
     useEffect(() => {
-        fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}`)
+        fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}/?page=${page}`)
       .then(response => response.json())
       .then(data => setHotels(data))
     },[])
+    
 
-   const AddtoFavorite = () => {
-        if (favorite) {
-            setFavorite (false)
-        } else {
+   const addtoFavorite = (id, index) => {
+        
+        console.log("id", id);
+        console.log("index", index);
+        console.log("hotels.results",hotels.results);
+        // var includ = hotels.results[index]._id.includes(id)
+        // console.log("includ", includ)
+        if (hotels.results[index]._id === id) {
             setFavorite(true)
         }
+
     }
+
+    const removetoFavorite = (id) => {
+        setFavorite(false)
+    }
+    const NextPage = () => {
+        if (page < 4){
+            setPage(page +1 )
+        }
+    }
+    const PreviousPage = () => {
+        if (page >1){
+            setPage(page-1)
+        }
+    }
+
+    console.log("page",page)
 
     if(hotels == null) {
         return null
     } else {
-        console.log(hotels)
+        
         return (
         
             <Container>
+                
                 <ListContainer> 
-                {hotels.results.map((hotel) => 
-                    // var src = hotel.pictures.find(picture => arrayImage.includes(picture))
-                    // if (src) {
-                    //     src = 'https://trippy-konexio.herokuapp.com' + src
-                    // }
-                    // else { src = 'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=' }
+                {hotels.results.map((hotel, index) => 
+    
                 
-                
+                    
                    <List>
-                    {favorite ? (<BUTTON1> <BsStar onClick={AddtoFavorite}/> </BUTTON1>) : (<BUTTON2> <BsStar onClick={AddtoFavorite}/> </BUTTON2>) }
+                    
+                    {favorite ? (<BUTTON1> <BsStar onClick={() => removetoFavorite(hotel._id, index)}/> </BUTTON1>) : (<BUTTON2> <BsStar onClick={()=>addtoFavorite(hotel._id, index)}/> </BUTTON2>) }
                     {/* <img src={src} alt={hotel.phone} /> */}
+                     <Link to={`/hotel/${hotel._id}`} >
                     <p> {hotel.name} </p>
                     <p> {hotel.phone} </p>
                     <p> {hotel.stars} </p>
+                    </Link>
                    </List> 
                 )}
+                 <button onClick={NextPage}>suivant</button>
+                    <button onClick={PreviousPage}>précedent</button>
                 </ListContainer>
                 <MapContainer>
                     <GoogleMapReact
@@ -91,6 +119,7 @@ const City = () => {
                             lat={hotel.location.lat}
                             lng={hotel.location.lon}
                             price={hotel.price}
+                            name={hotel.name}
                         />
                         )}
                     </GoogleMapReact>

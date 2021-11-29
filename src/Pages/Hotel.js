@@ -2,12 +2,11 @@ import React from 'react'
 import { useContext,useState, useEffect} from 'react';
 import { CityContext } from '../context/City';
 import Header from '../components/Header';
-import {FaStar} from 'react-icons/fa/index.esm';
 import styled from 'styled-components'
 import ReactStars from "react-rating-stars-component";
-import { render } from "react-dom";
 import HotelMap  from '../components/HotelMap';
 import Footer from '../components/Footer'
+import { useParams } from 'react-router';
 import Icones from '../components/Icones';
 import { element } from 'prop-types';
 
@@ -59,6 +58,8 @@ const Text = styled.p`
     color: gray;
     `
 
+
+
 const IconAlign = styled.ul`
     padding: 5px;
     
@@ -79,17 +80,20 @@ const IconItem = styled.div`
 // le stoker dans le state hotel
 // afficher l'objet hotel
 const Hotel = () => {
-    const [hotel, setHotel] = useState(null)
+    const {id} = useParams()
+    const [hotelData, sethotelData] = useState(null)
     const [featActive, setFeatActive]= useState(false)
     
     useEffect(() => { // => componentDidMount
         getHotel()
     }, [])
 
+    console.log("hotel",id)
+
     const getHotel = () => {
-        fetch(`https://trippy-konexio.herokuapp.com/api/hotels/619b99fc53a95d1d32bf1539`)
+        fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}`)
         .then(response => response.json())
-        .then(data => setHotel(data.result))
+        .then(data => sethotelData(data.result))
     }
 
     const handleFeature = ()=> {
@@ -98,34 +102,33 @@ const Hotel = () => {
         }else if (featActive === true){
             setFeatActive(false)
         }
-
     }
 
     // console.log(hotel)
    
 
     // const stars = hotel.star -1
-    console.log(hotel)
-    if (hotel == null){
+    console.log(hotelData)
+    if (hotelData == null){
         return null}
         else {
             return (
      
         <>
         <Banner>
-                <Title>{hotel.name}</Title>
+                <Title>{hotelData.name}</Title>
                 {/* <Title>{hotel.name}</Title> */}
             </Banner>
         <HotelCard>
-            <ReactStars count={hotel.star} size={24} color ="#ffd700"/>
-            <Text>Adresse : {hotel.adress}</Text>
-            <Text>Phone :{hotel.phone}</Text>
-            <Text>Price : {hotel.price}€</Text>
+            <ReactStars count={hotelData.star} size={24} color ="#ffd700"/>
+            <Text>Adresse : {hotelData.adress}</Text>
+            <Text>Phone :{hotelData.phone}</Text>
+            <Text>Price : {hotelData.price}€</Text>
             <Button onClick ={handleFeature}>FEATURES</Button>
             {featActive&& 
             <HotelCard>
-                {hotel.commodities.filter(function (ele, pos) {
-                                return hotel.commodities.indexOf(ele) == pos;
+                {hotelData.commodities.filter(function (ele, pos) {
+                                return hotelData.commodities.indexOf(ele) == pos;
                             }).map(element => (
                                 <Comm>
                                     <IconAlign>
@@ -143,13 +146,11 @@ const Hotel = () => {
             <p> Country :{hotel.country}</p>
             <p>{hotel.stars}</p> */}
         </HotelCard>
-        <HotelMap hotel = {hotel}></HotelMap>
+        <HotelMap hotelData = {hotelData}></HotelMap>
         <Footer>{Icones("wifi")}</Footer>
         
         </>
-
-)
-} 
+    ) } 
 }  
 
 
