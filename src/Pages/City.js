@@ -11,12 +11,12 @@ import {BsStar} from 'react-icons/bs'
 import Favorites from './Favorites';
 
 const MapContainer = styled.div`
-height: 100vh;
-width: 70%;`
+height: 50vh;
+width: 100%;`
 
 const ListContainer = styled.div`
-height: 100vh;
-width: 30%;
+height: 50vh;
+width: 100%;
 overflow: scroll;
 `
 const List = styled.div`
@@ -25,7 +25,7 @@ margin : 10px 5px;
 border-radius: 10px
 `
 const Container = styled.div`
-display : flex
+display : block
 `
 const BUTTON2 = styled.button`
 background-color : white;
@@ -64,9 +64,25 @@ const City = () => {
 
     }
 
+const onClickFavorite = (id) => {
+    if (!localStorage.getItem("favorites")) {
+        let newArray = []
+        newArray.push(id)
+        localStorage.setItem("favorites", JSON.stringify(newArray))
+    } else {
+        let favorites = JSON.parse(localStorage.getItem("favorites"))
+        favorites.push(id)
+        localStorage.setItem("favorites", JSON.stringify(favorites))
+    }
+    
+}
+
+
+
     const removetoFavorite = (id) => {
         setFavorite(false)
     }
+
     const NextPage = () => {
         if (page < 4){
             setPage(page +1 )
@@ -95,7 +111,7 @@ const City = () => {
                     
                    <List>
                     
-                    {favorite ? (<BUTTON1> <BsStar onClick={() => removetoFavorite(hotel._id, index)}/> </BUTTON1>) : (<BUTTON2> <BsStar onClick={()=>addtoFavorite(hotel._id, index)}/> </BUTTON2>) }
+                    {favorite ? (<BUTTON1> <BsStar onClick={() => removetoFavorite(hotel._id, index)}/> </BUTTON1>) : (<BUTTON2> <BsStar onClick={()=>{addtoFavorite(hotel._id, index); onClickFavorite(hotel._id)}}/> </BUTTON2>) }
                     {/* <img src={src} alt={hotel.phone} /> */}
                      <Link to={`/hotel/${hotel._id}`} >
                     <p> {hotel.name} </p>

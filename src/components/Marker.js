@@ -43,7 +43,6 @@ const Marker = (props) => {
         }}
         onMouseLeave={() => {
           setInfoWindowVisible(false)
-          console.log(infoWindowVisible)
         }} 
         
         style={{ 
