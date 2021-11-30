@@ -13,10 +13,6 @@ import HotelCard from '../components/HotelCard';
 import { FavoriteContext } from '../context/Favorite';
 import Footer from '../components/Footer'
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 8eb4948e5fcdaf68e709a5aa5754a053896c99d2
 const MapContainer = styled.div`
 height: 50vh;
 width: 100%;
@@ -38,7 +34,6 @@ const Button =styled.button`
     margin : 2px;
 
 `
-<<<<<<< HEAD
 const Header = styled.div`
     background-color : #219ebc;
     height : 100px;
@@ -51,8 +46,6 @@ const Title = styled.h2`
     color: white;
     text-transform: uppercase;
 `
-=======
->>>>>>> 8eb4948e5fcdaf68e709a5aa5754a053896c99d2
 
 const ListContainer = styled.div`
 height: 50vh;
