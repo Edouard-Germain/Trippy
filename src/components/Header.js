@@ -16,9 +16,6 @@ justify-content: space-between;
 align-items: center;
 background-color: #219ebc;
 position:relative;
-
-
-
 `;
 
 const Title = styled.h1`
@@ -61,7 +58,7 @@ const Header = () => {
               
                 
             
-            <Title style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"40px"}}>Home</Title>
+            <Title style={{color: 'white', padding:"0px 10px", textDecoration:"none", fontSize:"40px"}}>Home</Title>
             {/* <Container2>  <p>Menu</p></Container2> */}
             {/* <Title2>Menu</Title2> */}
             {!show ? 
@@ -70,11 +67,8 @@ const Header = () => {
                 : (
                     <Liste className="navbar">
                         
-                        <Link to="/" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"25px"}}>Home</Link>
-                        <Link to="/hotel" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"15px"}}>Hotel</Link>                     
-                        <Link to="/City" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"15px"}}>City</Link>
-                        <Link to="/room" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"15px"}}>Rooms</Link>
-                        <Link to="/Favoris" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"15px"}}>Favoris</Link>
+                        <Link to="/" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"20px"}}>Home</Link>
+                        <Link to="/Favoris" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"20px"}}>Favoris</Link>
                         <MdCancel style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"30px"}}    onClick={() => hamburgerClick(false)}/>
 
                         {/* <img src="https://tinyurl.com/9rnwf6vb" alt="image"/> */}
