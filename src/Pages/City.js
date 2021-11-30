@@ -11,7 +11,12 @@ import {BsStar} from 'react-icons/bs'
 import Favorites from './Favorites';
 import HotelCard from '../components/HotelCard';
 import { FavoriteContext } from '../context/Favorite';
+<<<<<<< HEAD
 import Footer from '../components/Footer'
+=======
+import { CityContext } from '../context/City';
+
+>>>>>>> 5e610b7c0bb4ec1ded9070cc6929d5a5bbca1ef0
 const MapContainer = styled.div`
 height: 50vh;
 width: 100%;
@@ -83,6 +88,12 @@ const City = () => {
     //       ref.current.scrollIntoView({ behavior: "smooth" })
     //     }
     //   }, [selectedHotel])
+<<<<<<< HEAD
+=======
+   
+
+
+>>>>>>> 5e610b7c0bb4ec1ded9070cc6929d5a5bbca1ef0
 
     const choosePage = (num) =>{
             setPage(num)
@@ -98,22 +109,25 @@ const City = () => {
                 
                 <ListContainer> 
                 {hotels.results.map((hotel, index) => 
-    
+                <> 
                     <HotelCard hotel={hotel} selectedHotel={selectedHotel}>
 
                     </HotelCard>
+
+                    <List  id={hotel}
+                   selectedHotel={selectedHotel}>
                     
-                //    <List  id={hotel}
-                //    selectedHotel={selectedHotel}>
+                   {isFavorite(hotel._id) ? (<BUTTON1> <BsStar onClick={() => removeFavorite(hotel._id)}/> </BUTTON1>) : (<BUTTON2> <BsStar onClick={() => onClickFavorite(hotel._id)}/> </BUTTON2>) }
+                    {/* <img src={src} alt={hotel.phone} /> */}
+                     <Link to={`/hotel/${hotel._id}`} >
+                    <p> {hotel.name} </p>
+                    <p> {hotel.phone} </p>
+                    <p> {hotel.stars} </p>
+                    </Link>
+                   </List> 
+                </>
                     
-                //    {isFavorite(hotel._id) ? (<BUTTON1> <BsStar onClick={() => removeFavorite(hotel._id)}/> </BUTTON1>) : (<BUTTON2> <BsStar onClick={() => onClickFavorite(hotel._id)}/> </BUTTON2>) }
-                //     {/* <img src={src} alt={hotel.phone} /> */}
-                //      <Link to={`/hotel/${hotel._id}`} >
-                //     <p> {hotel.name} </p>
-                //     <p> {hotel.phone} </p>
-                //     <p> {hotel.stars} </p>
-                //     </Link>
-                //    </List> 
+                
                 )}
                     <Button onClick={() => {choosePage(1)}}>1</Button>
                     <Button onClick={() => {choosePage(2)}}>2</Button>

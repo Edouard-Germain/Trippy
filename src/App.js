@@ -7,10 +7,7 @@ import { CityContextProvider } from './context/City';
 import Header from './components/Header';
 import Room from './Pages/Room';
 import Favorites from './Pages/Favorites'
-import { FavoriteContext, FavoriteContextProvider } from './context/Favorite';
-
-
-
+import { FavoriteContextProvider } from './context/Favorite';
 
 
 
