@@ -4,6 +4,9 @@ import {Link} from "react-router-dom";
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {MdCancel} from 'react-icons/md'
 import { useState} from 'react';
+import HeaderDesktop from './HeaderDesktop';
+import { useMediaQuery } from 'react-responsive'
+
 
 const Container = styled.div` 
 liststyle: none
@@ -20,7 +23,7 @@ height: 90px;
 `;
 
 const Title = styled.h1`
-font-family: 'Alegreya Sans SC', sans-serif;`
+font-family: 'Roboto', sans-serif;`
 
 
 
@@ -46,7 +49,8 @@ width: 100%;
 
 
 const Header = () => {
-  
+
+    const isDesktop = useMediaQuery({ query: '(min-width: 600px)' })
     const  [show, setShow] = useState(false);
     const hamburgerClick = (boolean) => {
         console.log("Hamber",boolean)
@@ -55,6 +59,7 @@ const Header = () => {
     console.log("state show ", show);
     return (
         <div>
+            
             <Container> 
               
                 
@@ -62,22 +67,30 @@ const Header = () => {
             <Title style={{color: 'white', padding:"0px 10px", textDecoration:"none", fontSize:"40px"}}>Home</Title>
             {/* <Container2>  <p>Menu</p></Container2> */}
             {/* <Title2>Menu</Title2> */}
-            {!show ? 
-            
-                <GiHamburgerMenu  style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"35px"}}onClick={() => hamburgerClick(true)}></GiHamburgerMenu> 
-                : (
-                    <Liste className="navbar">
-                        
-                        <Link to="/" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"20px"}}>Home</Link>
-                        <Link to="/Favoris" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"20px"}}>Favoris</Link>
-                        <MdCancel style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"30px"}}    onClick={() => hamburgerClick(false)}/>
 
-                        {/* <img src="https://tinyurl.com/9rnwf6vb" alt="image"/> */}
-       
-                    </Liste>
-                    
-                )
-            }  </Container> 
+            {isDesktop ? <HeaderDesktop /> :
+            <> 
+                {!show ? 
+            
+                    <GiHamburgerMenu  style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"35px"}}onClick={() => hamburgerClick(true)}></GiHamburgerMenu> 
+                    : (
+                        <Liste className="navbar">
+                            
+                            <Link to="/" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"20px"}}>Home</Link>
+                            <Link to="/favorite" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"20px"}}>Favoris</Link>
+                            <MdCancel style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"30px"}}    onClick={() => hamburgerClick(false)}/>
+    
+                            {/* <img src="https://tinyurl.com/9rnwf6vb" alt="image"/> */}
+           
+                        </Liste>
+                        
+                    )
+
+                }
+            </>
+            }
+            
+              </Container> 
          </div>
     );
 };
