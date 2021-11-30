@@ -23,10 +23,7 @@ const Title = styled.h3`
 
 const Card = () => {
     const {cities} = useContext(CityContext)
-    
-
-        
-        
+ 
     if (cities == null ) {
         return null
     } else {
