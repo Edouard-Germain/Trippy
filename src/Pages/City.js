@@ -8,12 +8,8 @@ import {Link} from 'react-router-dom'
 import styled from 'styled-components';
 // import arrayImage from '../images.json'
 import {BsStar} from 'react-icons/bs'
-import Favorites from './Favorites';
-<<<<<<< HEAD
 import HotelCard from '../components/HotelCard';
-=======
 import { FavoriteContext } from '../context/Favorite';
->>>>>>> 7e0fc492724fb203cd53727dabed507e209365fe
 
 const MapContainer = styled.div`
 height: 50vh;
@@ -98,22 +94,24 @@ const City = () => {
                 
                 <ListContainer> 
                 {hotels.results.map((hotel, index) => 
-    
+                <> 
                     <HotelCard hotel={hotel} selectedHotel={selectedHotel}>
 
                     </HotelCard>
+
+                    <List  id={hotel}
+                    selectedHotel={selectedHotel}>
+
+                    {isFavorite ? (<BUTTON1> <BsStar onClick={() => removetoFavorite(hotel._id, index)}/> </BUTTON1>) : (<BUTTON2> <BsStar onClick={()=>{addtoFavorite(hotel._id, index); onClickFavorite(hotel._id)}}/> </BUTTON2>) }
+                    {/* <img src={src} alt={hotel.phone} /> */}
+                        <Link to={`/hotel/${hotel._id}`} >
+                        <p> {hotel.name} </p>
+                        <p> {hotel.phone} </p>
+                        <p> {hotel.stars} </p>
+                        </Link>
+                    </List> 
+                </>
                     
-                //    <List  id={hotel}
-                //    selectedHotel={selectedHotel}>
-                    
-                //     {favorite ? (<BUTTON1> <BsStar onClick={() => removetoFavorite(hotel._id, index)}/> </BUTTON1>) : (<BUTTON2> <BsStar onClick={()=>{addtoFavorite(hotel._id, index); onClickFavorite(hotel._id)}}/> </BUTTON2>) }
-                //     {/* <img src={src} alt={hotel.phone} /> */}
-                //      <Link to={`/hotel/${hotel._id}`} >
-                //     <p> {hotel.name} </p>
-                //     <p> {hotel.phone} </p>
-                //     <p> {hotel.stars} </p>
-                //     </Link>
-                //    </List> 
                 )}
                     <button onClick={() => {choosePage(1)}}>1</button>
                     <button onClick={() => {choosePage(2)}}>2</button>
