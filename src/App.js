@@ -20,9 +20,12 @@ const App = () => {
           <Route exact path="/" element={<Home/>}> </Route> 
           <Route path="/hotels/:city" element={<City/>}> </Route>
            <Route path="/hotel/:id" element={<Hotel/>}> </Route>
-          {/* // <Route path="/room" element={<Room/>}> </Route>
-          // <Route path="/favorite" element={<Favorite/>}> </Route>
-          // <Route path="*" element={<NotFound/>}> </Route>  */} 
+         <Route path="/room" element={<Room/>}> </Route> 
+
+
+
+          {/* // <Route path="/favorite" element={<Favorite/>}> </Route>
+          // <Route path="*" element={<NotFound/>}> </Route>  */}  */}
 
         </Routes>
       </BrowserRouter>

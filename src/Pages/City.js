@@ -40,14 +40,28 @@ const City = () => {
     const [favorite, setFavorite] = useState(false)
     const  [page,setPage] = useState(1)
     const [hotels, setHotels] = useState(null)
+    // const [loading, setloading] = useState (true)  //Const pour LocalStorage Bilal
     // const [favoritePage, setFavoritePage] = useState([])
-    const [selectedBar, setSelectedBar] = useState({})
+    const [selectedBar, setSelectedBar] = useState({})   
+
+
+    // if(localStorage.getItem(id)) {
+    //     setHotels(JSON.parse)(localStorage.getItem(id)));
+    //     set (false)
+ 
+    
 
     useEffect(() => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}/?page=${page}`)
       .then(response => response.json())
       .then(data => setHotels(data))
+    
     },[])
+    
+    // if (localStorage.getItem("id")) {
+    //     localStorage.setItem ("setHotels",Date.now());  JSON.stringify (response.data));  
+    // }
+
     
 
    const addtoFavorite = (id, index) => {

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Favorites = () => {
+function Favorites(props) {
     return (
         <div>
             
         </div>
     );
-};
+}
 
 export default Favorites;

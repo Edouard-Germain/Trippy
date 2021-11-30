@@ -7,7 +7,7 @@ position:relative;
 overflow :hidden;
 width : 300px;
 padding: 3rem 0 2rem;
-background-color: #90e0ef;
+background-color: #219ebc;
 height: 600px;
 fontSize:35px;
 
@@ -19,12 +19,12 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 margin-left: auto;
 margin-right: auto;
 text-align:center;
-color: white ;
+color: #af0f8;
  
  `
  const Div =styled.div `
  
- font-family: 'Roboto Condensed', sans-serif;
+ font-family:font-family: 'Roboto Condensed', sans-serif;  ;
  display: flex;
  flex-direction: row;
  flex-wrap: wrap;
@@ -33,7 +33,7 @@ color: white ;
  align-content: stretch;
  margin : 40px 20px 10px 10px;
  font-size: 30px;
- background: #023047;
+ background: #caf0f8;
  margin : 10px ;
  
 
