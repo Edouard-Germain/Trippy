@@ -7,19 +7,16 @@ import { useState} from 'react';
 
 const Container = styled.div` 
 liststyle: none
-<<<<<<< HEAD
 padding: 10px;
-=======
-margin: 10px;
-padding-top: 10%;
->>>>>>> 7e0fc492724fb203cd53727dabed507e209365fe
 display: flex;
 flex-direction: row;
 list-style: none;
 justify-content: space-between;
+z-index : 2;
 align-items: center;
 background-color: #219ebc;
 position:relative;
+height: 90px;
 `;
 
 const Title = styled.h1`

@@ -6,20 +6,9 @@ import styled from 'styled-components';
 
 
 const FadeContainer = styled.div`
- height: 50% ;
- width: 50% ;
-display: flex center;
-height-max:50px ;
-object-fit:cover;
-// duration:1000;
-// transitionDuration:500;
- infinitie: true ;
-indicators: true;
- arrows:true ;
-// widht:100%;
-// hight:100%
-margin:auto; 
-text-align:center;
+width: 100%;
+height: calc(100vh - 90px);
+overflow: hidden
 `
 
 
@@ -52,11 +41,11 @@ text-align:center;
 const SlideShow = () => {
   return (
     <div className="slide-container">
-     <FadeContainer>  
+     <FadeContainer  >  
   
-      <Fade>
+      <Fade arrows={false} >
           <div className="each-fade "> 
-          <img style={{width:"100%",height:"100%"}}src="https://www.yonder.fr/sites/default/files/styles/lg-insert/public/contenu/destinations/Moorea%20polynesie%C2%A9%20Gr%C3%A9goire%20Le%20Bacon%20Tahiti%20Nui%20Helicopters_0.jpg?itok=SZMcCh6M"/>
+          <img style={{width:"100%",height:"100%"}} src="https://www.yonder.fr/sites/default/files/styles/lg-insert/public/contenu/destinations/Moorea%20polynesie%C2%A9%20Gr%C3%A9goire%20Le%20Bacon%20Tahiti%20Nui%20Helicopters_0.jpg?itok=SZMcCh6M"/>
           </div> 
          
           {/* <div className="each-fade "> 
