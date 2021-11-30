@@ -8,8 +8,7 @@ const CityContext = createContext({})
 const CityContextProvider = (props) => {
     const [cities, setCity] = useState(citiesTemplate)
     const [selectedHotel, setSelectedHotel] = useState(null)
-
-
+    console.log("context",selectedHotel)
     const value = { 
         cities,
         setCity, 

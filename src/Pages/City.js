@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useContext } from 'react';
-
+import { CityContext } from '../context/City';
 import GoogleMapReact from 'google-map-react'
 import Marker from '../components/Marker';
 import { useParams } from 'react-router';
@@ -11,13 +11,33 @@ import {BsStar} from 'react-icons/bs'
 import Favorites from './Favorites';
 import HotelCard from '../components/HotelCard';
 import { FavoriteContext } from '../context/Favorite';
+
 import { CityContext } from '../context/City';
+
+import Footer from '../components/Footer'
+
+
 const MapContainer = styled.div`
 height: 50vh;
 width: 100%;
 @media (min-width: 800px) {
     height: 100vh;
 }`
+
+const Button =styled.button`
+    background: #219ebc;
+    border:1px solid #219ebc;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:17px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #219ebc;
+    border-radius: 50%;
+    margin : 2px;
+
+`
 
 const ListContainer = styled.div`
 height: 50vh;
@@ -55,8 +75,7 @@ const City = () => {
     const {selectedHotel} = useContext(CityContext)
     const ref = useRef()
     const {onClickFavorite, isFavorite, removeFavorite} = useContext(FavoriteContext)
-    
-
+    console.log(selectedHotel)
     // const  Hotel = ({hotel})
     useEffect(() => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}/?page=${page}`)
@@ -67,22 +86,17 @@ const City = () => {
      const choosePage = (num) =>{
             setPage(num)
     }
-    const PreviousPage = () => {
-        if (page >1){
-            setPage(page-1)
-        }
-    }
-
-   
 
     if(hotels == null) {
         return null
     } else {
         
         return (
-        
+        <>
+                <Header>
+                    <Title>{city}</Title>
+                </Header>
             <Container>
-                
                 <ListContainer> 
                 {hotels.results.map((hotel, index) => 
                 <> 
@@ -92,23 +106,23 @@ const City = () => {
 
                     <List  id={hotel}
                    selectedHotel={selectedHotel}>
-                    
-                   {isFavorite(hotel._id) ? (<BUTTON1> <BsStar onClick={() => removeFavorite(hotel._id)}/> </BUTTON1>) : (<BUTTON2> <BsStar onClick={() => onClickFavorite(hotel._id)}/> </BUTTON2>) }
                     {/* <img src={src} alt={hotel.phone} /> */}
-                     <Link to={`/hotel/${hotel._id}`} >
+
+                   {/* {isFavorite(hotel._id) ? (<BUTTON1> <BsStar onClick={() => removeFavorite(hotel._id)}/> </BUTTON1>) : (<BUTTON2> <BsStar onClick={() => onClickFavorite(hotel._id)}/> </BUTTON2>) } */}
+                     {/* <Link to={`/hotel/${hotel._id}`} >
                     <p> {hotel.name} </p>
                     <p> {hotel.phone} </p>
                     <p> {hotel.stars} </p>
-                    </Link>
+                    </Link> */}
                    </List> 
                 </>
                     
                 
                 )}
-                    <button onClick={() => {choosePage(1)}}>1</button>
-                    <button onClick={() => {choosePage(2)}}>2</button>
-                    <button onClick ={() => {choosePage(3)}}>3</button>
-                    <button onClick ={()=>{choosePage(4)}}>4</button>
+                    <Button onClick={() => {choosePage(1)}}>1</Button>
+                    <Button onClick={() => {choosePage(2)}}>2</Button>
+                    <Button onClick ={() => {choosePage(3)}}>3</Button>
+                    <Button onClick ={()=>{choosePage(4)}}>4</Button>
                 </ListContainer>
                 <MapContainer>
                     <GoogleMapReact
@@ -124,14 +138,15 @@ const City = () => {
                             lng={hotel.location.lon}
                             price={hotel.price}
                             name={hotel.name}
-                            hotel = {hotel}
+                            hotel = {hotel._id}
                         />
                         )}
                     </GoogleMapReact>
                 </MapContainer>
                 
             </Container>
-               
+            <Footer></Footer>
+        </>       
         );
     }
     
