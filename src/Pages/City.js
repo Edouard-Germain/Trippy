@@ -9,11 +9,8 @@ import styled from 'styled-components';
 // import arrayImage from '../images.json'
 import {BsStar} from 'react-icons/bs'
 import Favorites from './Favorites';
-<<<<<<< HEAD
 import HotelCard from '../components/HotelCard';
-=======
 import { FavoriteContext } from '../context/Favorite';
->>>>>>> 7e0fc492724fb203cd53727dabed507e209365fe
 
 const MapContainer = styled.div`
 height: 50vh;
@@ -72,7 +69,22 @@ const City = () => {
     //     }
     //   }, [selectedHotel])
 
-
+    const onClickFavorite = (id) => {
+        if (!localStorage.getItem("favorites")) {
+            let newArray = []
+            newArray.push(id)
+            localStorage.setItem("favorites", JSON.stringify(newArray))
+        } else {
+            let favorites = JSON.parse(localStorage.getItem("favorites"))
+            favorites.push(id)
+            localStorage.setItem("favorites", JSON.stringify(favorites))
+        }
+    
+    }
+    const removetoFavorite = (id) => {
+        setFavorite(false)
+    }
+    
    
 
 
@@ -106,7 +118,7 @@ const City = () => {
                 //    <List  id={hotel}
                 //    selectedHotel={selectedHotel}>
                     
-                //     {favorite ? (<BUTTON1> <BsStar onClick={() => removetoFavorite(hotel._id, index)}/> </BUTTON1>) : (<BUTTON2> <BsStar onClick={()=>{addtoFavorite(hotel._id, index); onClickFavorite(hotel._id)}}/> </BUTTON2>) }
+                //    {isFavorite(hotel._id) ? (<BUTTON1> <BsStar onClick={() => removeFavorite(hotel._id)}/> </BUTTON1>) : (<BUTTON2> <BsStar onClick={() => onClickFavorite(hotel._id)}/> </BUTTON2>) }
                 //     {/* <img src={src} alt={hotel.phone} /> */}
                 //      <Link to={`/hotel/${hotel._id}`} >
                 //     <p> {hotel.name} </p>
