@@ -34,7 +34,8 @@ const Marker = (props) => {
 
   
   const [infoWindowVisible, setInfoWindowVisible] = useState(false)
-    
+  const { setSelectedHotel } = useContext(CityContext)
+
   return (
    
       <>
@@ -43,10 +44,12 @@ const Marker = (props) => {
         <Price> {props.price}€ </Price>
         <FaMapMarkerAlt onMouseEnter={() => {
           setInfoWindowVisible(true)
+          setSelectedHotel(props.hotel)
           ;
         }}
         onMouseLeave={() => {
           setInfoWindowVisible(false)
+          setSelectedHotel({})
         }} 
         
         style={{ 

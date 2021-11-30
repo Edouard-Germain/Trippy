@@ -20,6 +20,7 @@ const Banner = styled.div`
     background-size: cover;
     background-repeat: no-repeat;   
     padding-left : 20px `
+    
 const HotelCard = styled.div `
     padding: 20px, 20px;
     padding-bottom : 20px;
@@ -34,23 +35,23 @@ const HotelCard = styled.div `
 
 `
 const Button = styled.button`
-box-shadow: 4px 2px 9px 0px #3dc21b;
-background-color:#44c767;
-border-radius:28px;
-border:1px solid #18ab29;
-display:inline-block;
-cursor:pointer;
-color:#ffffff;
-font-family:Arial;
-font-size:9px;
-padding:5px 14px;
-text-decoration:none;
-text-shadow:0px 1px 0px #2f6627;`
+    box-shadow: 4px 2px 9px 0px #219ebc;
+    background-color:#219ebc;
+    border-radius:28px;
+    border:1px solid #219ebc;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:9px;
+    padding:5px 14px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #219ebc;`
 
 const Title = styled.h1 `
-color: #FFFFFF;
-text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;
-color: #FFFFFF;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 0px #219ebc, 5px 4px 0px rgba(0,0,0,0.15);
+    font-size: 28px;
         `
 
 const Text = styled.p`
@@ -74,11 +75,6 @@ const IconItem = styled.div`
     
     
 `
-// 1creer une route dynamique avec un parametre id 
-// recuperer le parametre dans l'url
-// utiliser le parametre pour fetcher le bon hotel
-// le stoker dans le state hotel
-// afficher l'objet hotel
 const Hotel = () => {
     const {id} = useParams()
     const [hotelData, sethotelData] = useState(null)
@@ -107,7 +103,7 @@ const Hotel = () => {
     // console.log(hotel)
    
 
-    // const stars = hotel.star -1
+    // const stars = hotelData.star -1
     console.log(hotelData)
     if (hotelData == null){
         return null}
@@ -118,7 +114,7 @@ const Hotel = () => {
         <Banner>
                 <Title>{hotelData.name}</Title>
                 {/* <Title>{hotel.name}</Title> */}
-            </Banner>
+        </Banner>
         <HotelCard>
             <ReactStars count={hotelData.star} size={24} color ="#ffd700"/>
             <Text>Adresse : {hotelData.adress}</Text>
@@ -126,7 +122,7 @@ const Hotel = () => {
             <Text>Price : {hotelData.price}€</Text>
             <Button onClick ={handleFeature}>FEATURES</Button>
             {featActive&& 
-            <HotelCard>
+        <HotelCard>
                 {hotelData.commodities.filter(function (ele, pos) {
                                 return hotelData.commodities.indexOf(ele) == pos;
                             }).map(element => (

@@ -6,8 +6,8 @@ import styled from 'styled-components';
 
 
 const FadeContainer = styled.div`
- height: 50% ;
- width: 50% ;
+ height: 80% ;
+ width: 80% ;
 display: flex center;
 height-max:50px ;
 object-fit:cover;
@@ -16,8 +16,6 @@ object-fit:cover;
  infinitie: true ;
 indicators: true;
  arrows:true ;
-// widht:100%;
-// hight:100%
 margin:auto; 
 text-align:center;
 `

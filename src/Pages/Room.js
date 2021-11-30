@@ -6,9 +6,11 @@ const Style =styled.div`
 position:relative;
 overflow :hidden;
 width : 300px;
-padding: 3rem 0 2rem;
+padding: 1px 0 2rem;
 background-color: #219ebc;
-height: 600px;
+height: 520px;
+;
+
 fontSize:35px;
 
 transition : box-shadow 0.3s;
@@ -16,7 +18,6 @@ border: 1px solid #caf0f8;
 margin: 60px;
 border-radius:20px;
 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-margin-left: auto;
 margin-right: auto;
 text-align:center;
 color: #af0f8;
@@ -65,7 +66,8 @@ const Rooms =() => {
                     <h1>Room</h1>
                     <p>  Price: {rooms.price}€</p>
                     <p>Capacity: {rooms.people}</p>
-                    <p>Bathroom:{rooms.isBathroom} </p>
+                    <p>Bathroom: available{rooms.isBathroom} </p>
+                   
                     <SlideShow />
                 </Style>
              
