@@ -3,8 +3,18 @@ import { CityContext } from '../context/City';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import ReactStars from 'react-rating-stars-component';
+import { FavoriteContext } from '../context/Favorite';
+import {BsStar} from 'react-icons/bs';
 
 
+
+const BUTTON2 = styled.button`
+background-color : white;
+color : #ffbe0b`
+
+const BUTTON1 = styled.button`
+background-color : #ffbe0b;
+color : white`
 
 
 const List = styled.div`
@@ -21,6 +31,8 @@ const Text = styled.p`
     `
 
 const HotelCard =({selectedHotel,hotel}) =>{
+    const {onClickFavorite, isFavorite, removeFavorite} = useContext(FavoriteContext)
+
     let starz = hotel.star - 1
     const ref = useRef()
     useEffect(() => {
@@ -31,6 +43,8 @@ const HotelCard =({selectedHotel,hotel}) =>{
 
 return (
     <List ref={ref}>
+     {isFavorite(hotel._id) ? (<BUTTON1> <BsStar onClick={() => removeFavorite(hotel._id)}/> </BUTTON1>) : (<BUTTON2> <BsStar onClick={() => onClickFavorite(hotel._id)}/> </BUTTON2>) }
+
         <Link to={`/hotel/${hotel._id}`} >
             <Text>{hotel.name}</Text>
         </Link>    

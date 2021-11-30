@@ -10,12 +10,7 @@ import { useMediaQuery } from 'react-responsive'
 
 const Container = styled.div` 
 liststyle: none
-<<<<<<< HEAD
-margin: 10px;
-padding-top: 10%;
-=======
 padding: 10px;
->>>>>>> 5e610b7c0bb4ec1ded9070cc6929d5a5bbca1ef0
 display: flex;
 flex-direction: row;
 list-style: none;
