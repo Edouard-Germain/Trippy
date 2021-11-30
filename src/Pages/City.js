@@ -11,12 +11,9 @@ import {BsStar} from 'react-icons/bs'
 import Favorites from './Favorites';
 import HotelCard from '../components/HotelCard';
 import { FavoriteContext } from '../context/Favorite';
-<<<<<<< HEAD
 import Footer from '../components/Footer'
-=======
-import { CityContext } from '../context/City';
 
->>>>>>> 5e610b7c0bb4ec1ded9070cc6929d5a5bbca1ef0
+
 const MapContainer = styled.div`
 height: 50vh;
 width: 100%;
@@ -38,8 +35,7 @@ const Button =styled.button`
     margin : 2px;
 
 `
-const Header = styled.div`
-    `
+
 const ListContainer = styled.div`
 height: 50vh;
 width: 100%;
@@ -88,12 +84,9 @@ const City = () => {
     //       ref.current.scrollIntoView({ behavior: "smooth" })
     //     }
     //   }, [selectedHotel])
-<<<<<<< HEAD
-=======
    
 
 
->>>>>>> 5e610b7c0bb4ec1ded9070cc6929d5a5bbca1ef0
 
     const choosePage = (num) =>{
             setPage(num)

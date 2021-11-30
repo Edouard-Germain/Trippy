@@ -10,14 +10,10 @@ import { useMediaQuery } from 'react-responsive'
 
 const Container = styled.div` 
 liststyle: none
-<<<<<<< HEAD
 margin: 10px;
 padding-top: 10%;
-=======
 padding: 10px;
->>>>>>> 5e610b7c0bb4ec1ded9070cc6929d5a5bbca1ef0
 display: flex;
-flex-direction: row;
 list-style: none;
 justify-content: space-between;
 z-index : 2;
@@ -69,7 +65,7 @@ const Header = () => {
               
                 
             
-            <Title style={{color: 'white', padding:"0px 10px", textDecoration:"none", fontSize:"40px"}}>Home</Title>
+            <Title style={{color: 'white', padding:"0px 10px", textDecoration:"none", fontSize:"40px"}}><i>Trippy</i></Title>
             {/* <Container2>  <p>Menu</p></Container2> */}
             {/* <Title2>Menu</Title2> */}
 
