@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useContext } from 'react';
-
+import { CityContext } from '../context/City';
 import GoogleMapReact from 'google-map-react'
 import Marker from '../components/Marker';
 import { useParams } from 'react-router';
@@ -11,7 +11,7 @@ import {BsStar} from 'react-icons/bs'
 import Favorites from './Favorites';
 import HotelCard from '../components/HotelCard';
 import { FavoriteContext } from '../context/Favorite';
-
+import Footer from '../components/Footer'
 const MapContainer = styled.div`
 height: 50vh;
 width: 100%;
@@ -19,6 +19,22 @@ width: 100%;
     height: 100vh;
 }`
 
+const Button =styled.button`
+    background: #219ebc;
+    border:1px solid #219ebc;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:17px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #219ebc;
+    border-radius: 50%;
+    margin : 2px;
+
+`
+const Header = styled.div`
+    `
 const ListContainer = styled.div`
 height: 50vh;
 width: 100%;
@@ -51,11 +67,10 @@ const City = () => {
     const  [page,setPage] = useState(1)
     const [hotels, setHotels] = useState(null)
     // const [favoritePage, setFavoritePage] = useState([])
-    const selectedHotel = useContext(CityContext)
+    const {selectedHotel} = useContext(CityContext)
     const ref = useRef()
     const {onClickFavorite, isFavorite, removeFavorite} = useContext(FavoriteContext)
-    
-
+    console.log(selectedHotel)
     // const  Hotel = ({hotel})
     useEffect(() => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}/?page=${page}`)
@@ -69,43 +84,16 @@ const City = () => {
     //     }
     //   }, [selectedHotel])
 
-    const onClickFavorite = (id) => {
-        if (!localStorage.getItem("favorites")) {
-            let newArray = []
-            newArray.push(id)
-            localStorage.setItem("favorites", JSON.stringify(newArray))
-        } else {
-            let favorites = JSON.parse(localStorage.getItem("favorites"))
-            favorites.push(id)
-            localStorage.setItem("favorites", JSON.stringify(favorites))
-        }
-    
-    }
-    const removetoFavorite = (id) => {
-        setFavorite(false)
-    }
-    
-   
-
-
-
     const choosePage = (num) =>{
             setPage(num)
     }
-    const PreviousPage = () => {
-        if (page >1){
-            setPage(page-1)
-        }
-    }
-
-   
 
     if(hotels == null) {
         return null
     } else {
         
         return (
-        
+        <>
             <Container>
                 
                 <ListContainer> 
@@ -127,10 +115,10 @@ const City = () => {
                 //     </Link>
                 //    </List> 
                 )}
-                    <button onClick={() => {choosePage(1)}}>1</button>
-                    <button onClick={() => {choosePage(2)}}>2</button>
-                    <button onClick ={() => {choosePage(3)}}>3</button>
-                    <button onClick ={()=>{choosePage(4)}}>4</button>
+                    <Button onClick={() => {choosePage(1)}}>1</Button>
+                    <Button onClick={() => {choosePage(2)}}>2</Button>
+                    <Button onClick ={() => {choosePage(3)}}>3</Button>
+                    <Button onClick ={()=>{choosePage(4)}}>4</Button>
                 </ListContainer>
                 <MapContainer>
                     <GoogleMapReact
@@ -146,14 +134,15 @@ const City = () => {
                             lng={hotel.location.lon}
                             price={hotel.price}
                             name={hotel.name}
-                            hotel = {hotel}
+                            hotel = {hotel._id}
                         />
                         )}
                     </GoogleMapReact>
                 </MapContainer>
                 
             </Container>
-               
+            <Footer></Footer>
+        </>       
         );
     }
     

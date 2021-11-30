@@ -7,12 +7,8 @@ import { useState} from 'react';
 
 const Container = styled.div` 
 liststyle: none
-<<<<<<< HEAD
-padding: 10px;
-=======
 margin: 10px;
 padding-top: 10%;
->>>>>>> 7e0fc492724fb203cd53727dabed507e209365fe
 display: flex;
 flex-direction: row;
 list-style: none;

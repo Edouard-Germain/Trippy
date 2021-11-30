@@ -34,8 +34,8 @@ const Marker = (props) => {
 
   
   const [infoWindowVisible, setInfoWindowVisible] = useState(false)
-  const { setSelectedHotel } = useContext(CityContext)
-
+  const {selectedHotel, setSelectedHotel } = useContext(CityContext)
+  // console.log(props)
   return (
    
       <>
