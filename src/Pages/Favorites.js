@@ -67,7 +67,7 @@ const Favorites = () => {
         }, [])
 
         const removeItem = (id) => {
-            let find = hotels.find(e => e._id === id)
+            let find = hotels.findIndex(e => e._id === id)
             
                 hotels.splice(find, 1) 
             
