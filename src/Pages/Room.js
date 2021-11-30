@@ -24,7 +24,7 @@ color: white ;
  `
  const Div =styled.div `
  
- font-family: papyrus ;
+ font-family: 'Roboto Condensed', sans-serif;
  display: flex;
  flex-direction: row;
  flex-wrap: wrap;
@@ -33,6 +33,8 @@ color: white ;
  align-content: stretch;
  margin : 40px 20px 10px 10px;
  font-size: 30px;
+ background: #023047;
+ margin : 10px ;
  
 
 

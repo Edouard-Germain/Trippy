@@ -31,11 +31,15 @@ const Box = styled.div`
 
 
 const Marker = (props) => {
+
+  
   const [infoWindowVisible, setInfoWindowVisible] = useState(false)
   const { setSelectedHotel } = useContext(CityContext)
 
   return (
+   
       <>
+     
         <MarkerContainer>
         <Price> {props.price}€ </Price>
         <FaMapMarkerAlt onMouseEnter={() => {
