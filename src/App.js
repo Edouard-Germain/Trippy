@@ -7,10 +7,7 @@ import { CityContextProvider } from './context/City';
 import Header from './components/Header';
 import Room from './Pages/Room';
 import Favorites from './Pages/Favorites'
-import { FavoriteContext, FavoriteContextProvider } from './context/Favorite';
-
-
-
+import { FavoriteContextProvider } from './context/Favorite';
 
 
 
@@ -23,7 +20,8 @@ const App = () => {
           <Route exact path="/" element={<Home/>}> </Route> 
           <Route path="/hotels/:city" element={<City/>}> </Route>
            <Route path="/hotel/:id" element={<Hotel/>}> </Route>
-           <Route path="/room" element={<Room/>}> </Route>
+           {/*  */}
+           <Route path="/Room" element={<Room/>}> </Route>
           <Route path="/favorite" element={<Favorites/>}> </Route>
           {/* <Route path="*" element={<NotFound/>}> </Route>   */}
 

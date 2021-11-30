@@ -4,7 +4,15 @@ import { Link, useNavigate } from "react-router-dom"
 import { useContext } from 'react'
 import { CityContext } from '../context/City'
 
-
+const Display = styled.div`
+@media (min-width: 600px) {
+    display : flex;
+    flex-wrap : wrap;
+    align-items : center;
+    justify-content : space-evenly
+    
+}
+`
 
 const IMG = styled.img`
   height:200px;
@@ -15,11 +23,9 @@ const IMG = styled.img`
     height : 300px;
 }
 @media (min-width: 800px) {
-    height : 400px;
 }
 
 @media (min-width: 1000px) {
-    height : 450px;
 }
 `
 const Container = styled.div`
@@ -27,15 +33,11 @@ const Container = styled.div`
   margin : 30px 20px;
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  @media (min-width: 600px) {
-    margin : 50px 70px;
-}
-@media (min-width: 800px) {
-    margin : 60px 80px;
-}
+  
 
-@media (min-width: 1000px) {
-    margin : 70px 90px;
+  @media (min-width: 600px) {
+    width : 30%;
+    
 }
 `
 const Title = styled.h3`
@@ -49,7 +51,7 @@ const Card = () => {
         return null
     } else {
         return (
-            <div>
+            <Display>
                 {cities.map(city => 
                     <Container >
                         
@@ -58,8 +60,9 @@ const Card = () => {
                         <Title> {city.name} </Title>
                         </Link>
                     </Container>
+                
                 )}
-            </div>
+            </Display>
         );
     }
     

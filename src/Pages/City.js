@@ -52,7 +52,7 @@ const City = () => {
     const [hotels, setHotels] = useState(null)
    
     // const [favoritePage, setFavoritePage] = useState([])
-    const selectedHotel = useContext(CityContext)
+    const {selectedHotel} = useContext(CityContext)
     const ref = useRef()
     const {onClickFavorite, isFavorite, removeFavorite} = useContext(FavoriteContext)
     
@@ -85,22 +85,25 @@ const City = () => {
                 
                 <ListContainer> 
                 {hotels.results.map((hotel, index) => 
-    
+                <> 
                     <HotelCard hotel={hotel} selectedHotel={selectedHotel}>
 
                     </HotelCard>
+
+                    <List  id={hotel}
+                   selectedHotel={selectedHotel}>
                     
-                //    <List  id={hotel}
-                //    selectedHotel={selectedHotel}>
+                   {isFavorite(hotel._id) ? (<BUTTON1> <BsStar onClick={() => removeFavorite(hotel._id)}/> </BUTTON1>) : (<BUTTON2> <BsStar onClick={() => onClickFavorite(hotel._id)}/> </BUTTON2>) }
+                    {/* <img src={src} alt={hotel.phone} /> */}
+                     <Link to={`/hotel/${hotel._id}`} >
+                    <p> {hotel.name} </p>
+                    <p> {hotel.phone} </p>
+                    <p> {hotel.stars} </p>
+                    </Link>
+                   </List> 
+                </>
                     
-                //    {isFavorite(hotel._id) ? (<BUTTON1> <BsStar onClick={() => removeFavorite(hotel._id)}/> </BUTTON1>) : (<BUTTON2> <BsStar onClick={() => onClickFavorite(hotel._id)}/> </BUTTON2>) }
-                //     {/* <img src={src} alt={hotel.phone} /> */}
-                //      <Link to={`/hotel/${hotel._id}`} >
-                //     <p> {hotel.name} </p>
-                //     <p> {hotel.phone} </p>
-                //     <p> {hotel.stars} </p>
-                //     </Link>
-                //    </List> 
+                
                 )}
                     <button onClick={() => {choosePage(1)}}>1</button>
                     <button onClick={() => {choosePage(2)}}>2</button>

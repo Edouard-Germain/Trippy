@@ -6,55 +6,21 @@ import styled from 'styled-components';
 
 
 const FadeContainer = styled.div`
- height: 80% ;
- width: 80% ;
-display: flex center;
-height-max:50px ;
-object-fit:cover;
-// duration:1000;
-// transitionDuration:500;
- infinitie: true ;
-indicators: true;
- arrows:true ;
-margin:auto; 
-text-align:center;
+width: 100%;
+height: calc(100vh - 90px);
+overflow: hidden
 `
 
 
-// const fadeImages = [
-//   {
-//   url: ' https://tinyurl.com/xajxnw29 ',
-//   caption: 'First Slide'
-//   },
-//   {
-//   url: ' https://tinyurl.com/5xnr92au',
-//   caption: 'Second Slide'
-//   },
-//   {
-//   url: 'https://tinyurl.com/aj4zj2k8',
-//   caption: 'Third Slide'
-//   },
-//   {
-//     url: 'https://tinyurl.com/yhxj67hc',
-//     caption: 'Four Slide'
-//     },
-//     {
-//         url: 'https://tinyurl.com/4pv5apph',
-//         caption: 'Five Slide'
-//     },
-
-
-
-// ];
 
 const SlideShow = () => {
   return (
     <div className="slide-container">
-     <FadeContainer>  
+     <FadeContainer  >  
   
-      <Fade>
+      <Fade arrows={false} >
           <div className="each-fade "> 
-          <img style={{width:"100%",height:"100%"}}src="https://www.yonder.fr/sites/default/files/styles/lg-insert/public/contenu/destinations/Moorea%20polynesie%C2%A9%20Gr%C3%A9goire%20Le%20Bacon%20Tahiti%20Nui%20Helicopters_0.jpg?itok=SZMcCh6M"/>
+          <img style={{width:"100%",height:"100%"}} src="https://www.yonder.fr/sites/default/files/styles/lg-insert/public/contenu/destinations/Moorea%20polynesie%C2%A9%20Gr%C3%A9goire%20Le%20Bacon%20Tahiti%20Nui%20Helicopters_0.jpg?itok=SZMcCh6M"/>
           </div> 
          
           {/* <div className="each-fade "> 

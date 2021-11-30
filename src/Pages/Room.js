@@ -24,8 +24,7 @@ color: #af0f8;
  
  `
  const Div =styled.div `
- 
- font-family:font-family: 'Roboto Condensed', sans-serif;  ;
+ font-family: 'Roboto Condensed', sans-serif;  ;
  display: flex;
  flex-direction: row;
  flex-wrap: wrap;

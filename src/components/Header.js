@@ -13,9 +13,11 @@ display: flex;
 flex-direction: row;
 list-style: none;
 justify-content: space-between;
+z-index : 2;
 align-items: center;
 background-color: #219ebc;
 position:relative;
+height: 90px;
 `;
 
 const Title = styled.h1`
@@ -69,10 +71,10 @@ const Header = () => {
                         
                         <Link to="/" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"20px"}}>Home</Link>
                         <Link to="/Favoris" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"20px"}}>Favoris</Link>
-                        <Link to="/room" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"20px"}}>Room</Link>
+                        <Link to="/room" style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"20px"}}>room</Link>
                         <MdCancel style={{color: 'white', padding:"20px", textDecoration:"none", fontSize:"30px"}}    onClick={() => hamburgerClick(false)}/>
 
-                        {/* <img src="https://tinyurl.com/9rnwf6vb" alt="image"/> */}
+                       
        
                     </Liste>
                     
